@@ -73,3 +73,40 @@ $addTask.addEventListener("click",()=>{
     <br>`
     document.body.appendChild(input);
 })
+
+
+let formulario = document.querySelector("#login");
+
+function login(event){
+    event.preventDefault();
+    console.log(event);
+
+    console.dir(formulario);
+
+    let valueUsername = formulario.username.value;
+    let valuePassword = formulario.password.value;
+    console.log(valueUsername);
+    console.log(valuePassword);
+
+    const token = generateToken(valueUsername,valuePassword);
+    localStorage.setItem("token",token);
+
+    const validated = existToken();
+    if(validated){
+        const divPrivateContent = document.querySelector("#privateContent");
+        divPrivateContent.className="showContent";
+        formulario.className = "hideContent";
+    }
+}
+
+function generateToken(username,password){
+    return username + password;
+}
+
+function existToken(){
+    if(localStorage.getItem("token") !==null){
+        return true;
+    }else{
+        return false;
+    }
+}

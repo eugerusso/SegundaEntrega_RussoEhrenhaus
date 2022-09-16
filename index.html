@@ -8,31 +8,47 @@
     <title>DOM</title>
 </head>
 <body>
-    <header>
-        <h2 id="saludo"></h2>
-        <nav id="menu">
-            <ul>
-                <li><a href="#">Parte 1</a></li>
-                <li><a href="#">Parte 2</a></li>
-                <li><a href="#">Parte 3</a></li>
-                <li><a href="#">Parte 4</a></li>
+    <form action="" id="login">
+        <div class="field"> 
+            <label for="username">Usuario</label>
+            <input type="text" placeholder="Usuario" name="username">
+        </div>
+        <div class="field">
+            <label for="password">Contraseña</label>
+            <input type="text" placeholder="Contraseña" name="password">
+        </div>
+        <div class="field">
+            <button type="submit" onclick="login(event)">Log in</button>
+        </div>
+    </form>
+    
+    <div class="hideContent" id="privateContent">
+        <header>
+            <h2 id="saludo"></h2>
+            <nav id="menu">
+                <ul>
+                    <li><a href="#">Parte 1</a></li>
+                    <li><a href="#">Parte 2</a></li>
+                    <li><a href="#">Parte 3</a></li>
+                    <li><a href="#">Parte 4</a></li>
+                </ul>
+            </nav>
+            <div class="clima-hoy"></div>
+        </header>
+    
+        <main>
+            <h2>¿Qué tenés que hacer hoy?</h2>
+            <ul id="tasks">
+                
             </ul>
-        </nav>
-        <div class="clima-hoy"></div>
-    </header>
-
-    <main>
-        <h2>¿Qué tenés que hacer hoy?</h2>
-        <ul id="tasks">
-            
-        </ul>
-
-        <button id="addTask">+</button>
-    </main>
-
-    <footer>
-
-    </footer>
+    
+            <button id="addTask">+</button>
+        </main>
+    
+        <footer>
+    
+        </footer>
+    </div>
     <script src="./js/index.js"></script>
 </body>
 </html>
