@@ -110,3 +110,79 @@ function existToken(){
         return false;
     }
 }
+
+//Select elements
+const form = document.getElementById("todoform");
+const todoInput = document.getElementById("newtodo");
+const todosListEl = document.getElementById("todos-list");
+
+//vars
+let todos =[]; 
+
+//Form submit
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    console.log("submit")
+
+    saveTodo();
+    renderTodos();
+})
+
+//SAVE TO DO 
+
+function saveTodo(){
+    const todoValue = todoInput.value;
+
+    //check if the todo is empty
+    const isEmpty= todoValue === '';
+
+    //check for duplicate
+    const isDuplicate = todos.some((todo)=> todo.value.toUpperCase() == todoValue.toUpperCase());
+    if(isEmpty){
+        alert ('che, está vacio');
+    }else if(isDuplicate){
+        alert ('está repetido')
+    }else{
+        todos.push({
+            value: todoValue,
+            checked: false,
+            color: '#' + Math.floor(Math.random()*16777215).toString(16),
+        });
+        todoInput.value= ""
+    }
+    
+}
+
+//RENDER TO DO 
+
+function renderTodos(){
+    //CLEAR ELEMENT BEFORE RENDER
+    todosListEl.innerHTML= "";
+
+    //RENDER TODOS
+    todos.forEach((todo,index) =>{
+        todosListEl.innerHTML += `
+        <div class="todo" id=${index}>
+                <i class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle '}"
+                style = "color : ${todo.color}"
+                ></i>
+                <p class="">${todo.value}</p>
+                <i class="bi bi-pencil-square"></i>
+                <i class="bi bi-trash"></i>
+            </div>`
+    })
+}
+
+//CLICK EVENT LISTENER FOR ALL THE TODOS
+
+todosListEl.addEventListener("click", (event) => {
+    const target = event.target;
+    const parentElement = target.parentNode;
+
+    if(parentElement.className !== "todo")return;
+
+    const todo= parentElement;
+    const todoId= Number(todo.id);
+
+    console.log(todoId);
+})
