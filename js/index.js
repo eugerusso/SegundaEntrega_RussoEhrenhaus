@@ -2,17 +2,17 @@
 
 let hoy = new Date();
 console.log(hoy);
-let usuario = prompt(`Ingrese su nombre`); 
+// let usuario = prompt(`Ingrese su nombre`); 
 let nuevaTarea;
 const listaDeTareas=[];
-let cuantasTareas = parseInt(prompt(`¿Cuántas tareas vas a realizar hoy?(Ingresa un número)`))
+// let cuantasTareas = parseInt(prompt(`¿Cuántas tareas vas a realizar hoy?(Ingresa un número)`))
 
 // const saludar = () =>{ alert(`Bienvenido/a ${usuario} listo/a para organizar tu día?`)}
 
-function ingresarTarea(){
+/* function ingresarTarea(){
     nuevaTarea= new Tarea(prompt(`Ingrese la tarea que tenes que realizar `),prompt(`Ingrese una breve descripcion`));    
     return nuevaTarea
-}
+} */
 
 class Tarea{
     constructor(titulo,descripcion){
@@ -31,7 +31,8 @@ listaDeTareas.forEach (el => console.log(el));
 
 //creando un template string para el saludo
 let saludo = document.getElementById("saludo");
-saludo.innerText= `Bienvenido ${usuario}`;
+let username = document.getElementById("username");
+saludo.innerText= `Bienvenido ${username}`;
 
 
 //crear una lista a traves del array creado
@@ -53,14 +54,6 @@ for(const lista of listaDeTareas){
     task.appendChild(li);
 }
 
-let probandoArray =["tarea1","tarea2","tarea3"]
-
-for(const prueba of probandoArray){
-    let punto=  document.createElement("li");
-    punto.innerHTML = prueba;
-    task.append(punto);
-
-}
 
 //llamo al id de agregar tarea
 
@@ -111,12 +104,12 @@ function existToken(){
     }
 }
 
-//Select elements
+//Elementos del html
 const form = document.getElementById("todoform");
 const todoInput = document.getElementById("newtodo");
 const todosListEl = document.getElementById("todos-list");
 
-//vars
+//variables
 let todos =[]; 
 let EditTodoId= -1;
 
@@ -140,9 +133,9 @@ function saveTodo(){
     //check for duplicate
     const isDuplicate = todos.some((todo)=> todo.value.toUpperCase() == todoValue.toUpperCase());
     if(isEmpty){
-        alert ('che, está vacio');
+        alert ('Ojo que está vacio');
     }else if(isDuplicate){
-        alert ('está repetido')
+        alert ('Está repetido')
     }else{
         if(EditTodoId >= 0){
             todos = todos.map((todo,index) =>({
