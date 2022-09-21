@@ -57,7 +57,7 @@ for(const lista of listaDeTareas){
 
 //llamo al id de agregar tarea
 
-const $addTask = document.getElementById("addTask");
+/* const $addTask = document.getElementById("addTask");
 
 $addTask.addEventListener("click",()=>{
     let input= document.createElement("input");
@@ -66,11 +66,11 @@ $addTask.addEventListener("click",()=>{
     <br>`
     document.body.appendChild(input);
 })
+ */
 
-
-let formulario = document.querySelector("#login");
 
 function login(event){
+    let formulario = document.querySelector("#login");
     event.preventDefault();
     console.log(event);
 
